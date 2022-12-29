@@ -1,0 +1,159 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+body {
+  min-height: 100%;
+
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+html {
+  min-height: 100%;
+  background: url("./assets/pinboard.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: "Poppins", sans-serif;
+}
+.App {
+  min-height: 100%;
+}
+.main-container {
+  min-height: 100%;
+}
+.form-container {
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+.todos-container {
+  padding: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  justify-self: center;
+}
+.single-todo {
+  font-family: "Roboto", sans-serif;
+  display: inline-block;
+  padding: 20px 20px;
+  width: 200px;
+  height: 150px;
+  margin: 80px 30px 50px;
+  transform: rotate(10deg);
+  transform-origin: 0% 0%;
+  transition: transform 0.3s ease;
+  position: relative;
+  box-shadow: 20px 20px 20px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+.single-todo:hover {
+  transform: rotate(0deg);
+  transform-origin: 0% 0%;
+  transition: transform 0.3s ease;
+}
+.pin {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: blueviolet;
+  position: absolute;
+  top: -20px;
+  left: -5px;
+}
+.delete-icon {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 1.5rem;
+  height: 1.6rem;
+  display: none;
+}
+.single-todo:hover .delete-icon {
+  display: inline-block;
+  filter: invert(50%);
+}
+.single-todo:hover .delete-icon:hover {
+  display: inline-block;
+  filter: invert(0%);
+  cursor: pointer;
+}
+input[type="text"] {
+  padding: 12px 20px;
+  box-sizing: border-box;
+  width: 20rem;
+  font-size: 1.1rem;
+  vertical-align: top;
+  border-radius: 5px;
+  border: 1px solid black;
+}
+
+button {
+  box-sizing: border-box;
+  padding: 15px 20px;
+  color: white;
+  background-color: #283618;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+}
+button:hover {
+  cursor: pointer;
+}
+button:active {
+  background-color: #243015;
+}
+.navbar {
+  margin: 10px 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+.navbar nav {
+  max-width: 500px;
+  display: flex;
+  justify-content: space-around;
+  flex-grow: 0.1;
+  align-items: center;
+}
+a {
+  text-decoration: none;
+  color: black;
+  font-weight: 500;
+}
+.signup {
+  border-radius: 10px;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 30%;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 30px 50px;
+  min-width: 300px;
+  margin-top: 7%;
+}
+.signup label {
+  display: block;
+}
+.signup input {
+  display: block;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 20px;
+}
