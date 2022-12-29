@@ -1,6 +1,7 @@
 import express, { Express, Request, Response } from "express";
 const app = express();
 import todosRouter from "./routes/todosRoutes";
+import cors from "cors";
 
 //connecting to db
 import mongoose from "mongoose";
@@ -19,6 +20,7 @@ mongoose
   });
 
 //middleware
+app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 //routes
