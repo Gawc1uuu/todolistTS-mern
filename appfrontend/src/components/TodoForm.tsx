@@ -4,10 +4,10 @@ import axios from "axios";
 const TodoForm = () => {
   const [text, setText] = useState<string>("");
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    console.log(text);
+    await axios.post("http://localhost:4000/api/todos", { text });
     setText("");
   };
 

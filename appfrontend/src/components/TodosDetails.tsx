@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import { format } from "date-fns";
 import deleteIcon from "../assets/delete.svg";
 const colors = [
   "ffc6efee",
@@ -40,6 +41,7 @@ const TodosDetails = ({ todo }: todoProps) => {
       }}
     >
       <p>{todo.text}</p>
+      <p>{format(new Date(todo.createdAt), "dd/MM/yyyy")}</p>
       <p className="pin"></p>
       <img
         onClick={handleClick}
