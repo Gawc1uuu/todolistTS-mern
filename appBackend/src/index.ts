@@ -1,6 +1,7 @@
 import express, { Express, Request, Response } from "express";
 const app = express();
 import todosRouter from "./routes/todosRoutes";
+import userRouter from "./routes/usersRoutes";
 import cors from "cors";
 
 //connecting to db
@@ -25,3 +26,4 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 //routes
 app.use("/api/todos", todosRouter);
+app.use("/api/users", userRouter);

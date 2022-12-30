@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const app = (0, express_1.default)();
 const todosRoutes_1 = __importDefault(require("./routes/todosRoutes"));
+const usersRoutes_1 = __importDefault(require("./routes/usersRoutes"));
 const cors_1 = __importDefault(require("cors"));
 //connecting to db
 const mongoose_1 = __importDefault(require("mongoose"));
@@ -28,3 +29,4 @@ app.use(express_1.default.urlencoded({ extended: true }));
 app.use(express_1.default.json());
 //routes
 app.use("/api/todos", todosRoutes_1.default);
+app.use("/api/users", usersRoutes_1.default);
