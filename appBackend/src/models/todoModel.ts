@@ -2,8 +2,6 @@ import { Schema, model } from "mongoose";
 
 interface todo {
   text: string;
-  createdAt: string;
-  updatedAt: string;
 }
 
 const todoSchema = new Schema<todo>(
