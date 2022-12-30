@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import { useEffect } from "react";
 import axios from "axios";
 //components
 import TodoForm from "../components/TodoForm";
 import TodosDetails from "../components/TodosDetails";
 import useTodosContext from "../hooks/useTodosContext";
+import useAuthContext from "../hooks/useAuthContext";
 
 interface Todo {
   text: string;
@@ -15,6 +16,7 @@ interface Todo {
 
 const Home = () => {
   const { todos, dispatch } = useTodosContext();
+  const { user, dispatch: authDispatch } = useAuthContext();
 
   useEffect(() => {
     const getTodos = async () => {
@@ -27,7 +29,7 @@ const Home = () => {
     };
 
     getTodos();
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="main-container">
