@@ -1,13 +1,19 @@
-import mongoose, { Schema, model } from "mongoose";
+import mongoose, { Schema, model, Model } from "mongoose";
 import validator from "validator";
 import bcrypt from "bcrypt";
 
 interface UserInterface {
+  _id: string;
   email: string;
   password: string;
 }
 
-const userSchema = new Schema<UserInterface>({
+interface UserModel extends Model<UserInterface> {
+  login(email: string, password: string): UserInterface;
+  signup(email: string, password: string): UserInterface;
+}
+
+const userSchema = new Schema<UserInterface, UserModel>({
   email: {
     required: true,
     type: String,
@@ -19,7 +25,7 @@ const userSchema = new Schema<UserInterface>({
   },
 });
 
-userSchema.statics.password = async function (email, password) {
+userSchema.statics.login = async function (email, password) {
   if (!email || !password) {
     throw Error("email and password are required");
   }
@@ -28,7 +34,7 @@ userSchema.statics.password = async function (email, password) {
     throw Error("Incorrect email");
   }
 
-  const user = await User.findOne({ email });
+  const user = await this.findOne({ email });
 
   if (!user) {
     throw Error("user with that email do not exists");
@@ -48,7 +54,7 @@ userSchema.statics.signup = async function (email, password) {
     throw Error("email and password are required");
   }
 
-  const exists = await User.findOne({ email });
+  const exists = await this.findOne({ email });
   if (exists) {
     throw Error("User with that email already exists");
   }
@@ -68,6 +74,5 @@ userSchema.statics.signup = async function (email, password) {
   return user;
 };
 
-const User = model<UserInterface>("User", userSchema);
-
+const User = model<UserInterface, UserModel>("User", userSchema);
 export default User;

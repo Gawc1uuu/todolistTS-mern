@@ -4,11 +4,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
+const usersControllers_1 = require("../controllers/usersControllers");
 const router = express_1.default.Router();
-router.post("/login", (req, res) => {
-    return res.status(200).json({ msg: "LOGINING A NEW USER" });
-});
-router.post("/signup", (req, res) => {
-    return res.status(200).json({ msg: "SIGNING UP A NEW USER" });
-});
+router.post("/login", usersControllers_1.loginController);
+router.post("/signup", usersControllers_1.signupController);
 exports.default = router;

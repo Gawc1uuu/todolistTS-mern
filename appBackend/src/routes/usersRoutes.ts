@@ -1,12 +1,12 @@
 import express from "express";
+import {
+  signupController,
+  loginController,
+} from "../controllers/usersControllers";
 const router = express.Router();
 
-router.post("/login", (req, res) => {
-  return res.status(200).json({ msg: "LOGINING A NEW USER" });
-});
+router.post("/login", loginController);
 
-router.post("/signup", (req, res) => {
-  return res.status(200).json({ msg: "SIGNING UP A NEW USER" });
-});
+router.post("/signup", signupController);
 
 export default router;
