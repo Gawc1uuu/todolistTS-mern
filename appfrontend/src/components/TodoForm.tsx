@@ -1,13 +1,18 @@
 import React, { useState } from "react";
 import axios from "axios";
+import useTodosContext from "../hooks/useTodosContext";
 
 const TodoForm = () => {
+  const { dispatch } = useTodosContext();
   const [text, setText] = useState<string>("");
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    await axios.post("http://localhost:4000/api/todos", { text });
+    const response = await axios.post("http://localhost:4000/api/todos", {
+      text,
+    });
+    dispatch({ type: "ADD_TODO", payload: response.data });
     setText("");
   };
 
