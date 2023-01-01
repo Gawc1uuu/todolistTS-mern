@@ -20,6 +20,7 @@ const loginController = async (req: Request, res: Response) => {
 
 const signupController = async (req: Request, res: Response) => {
   const { email, password } = req.body;
+  console.log(email, password);
   try {
     const user = await User.signup(email, password);
     const token = createToken(user._id);

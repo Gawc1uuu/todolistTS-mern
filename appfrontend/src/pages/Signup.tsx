@@ -1,12 +1,14 @@
 import React, { useState } from "react";
+import useSignup from "../hooks/useSignup";
 
 const Signup = () => {
+  const { signup } = useSignup();
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(email, password);
+    signup(email, password);
   };
 
   return (
@@ -25,7 +27,7 @@ const Signup = () => {
           value={password}
           type="password"
         />
-        <button>Login</button>
+        <button>Sign up</button>
       </form>
     </div>
   );

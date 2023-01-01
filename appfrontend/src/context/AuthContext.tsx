@@ -1,11 +1,11 @@
-import React, { createContext, useReducer } from "react";
+import React, { createContext, useReducer, useEffect } from "react";
 
 interface AuthContextInterface {
   user: {
     email: string;
     token: string;
   } | null;
-  dispatch: React.Dispatch<any>;
+  dispatch: any;
 }
 
 export const AuthContext = createContext<AuthContextInterface | null>(null);
@@ -36,6 +36,13 @@ const authReducer = (state: StateInterface, action: ActionInterface): any => {
 
 const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
   const [state, dispatch] = useReducer(authReducer, { user: null });
+
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user")!);
+    if (user) {
+      dispatch({ type: "LOGIN", payload: user });
+    }
+  }, []);
 
   return (
     <AuthContext.Provider value={{ ...state, dispatch }}>
