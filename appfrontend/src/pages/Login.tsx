@@ -29,6 +29,7 @@ const Login = () => {
         />
         {isPending && <button disabled={true}>...</button>}
         {!isPending && <button>Login</button>}
+        {error && <p>{error}</p>}
       </form>
     </div>
   );
