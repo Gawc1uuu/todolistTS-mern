@@ -5,7 +5,7 @@ interface AuthContextInterface {
     email: string;
     token: string;
   } | null;
-  dispatch: any;
+  dispatch?: any;
 }
 
 export const AuthContext = createContext<AuthContextInterface | null>(null);
@@ -43,6 +43,8 @@ const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
       dispatch({ type: "LOGIN", payload: user });
     }
   }, []);
+
+  console.log(state);
 
   return (
     <AuthContext.Provider value={{ ...state, dispatch }}>

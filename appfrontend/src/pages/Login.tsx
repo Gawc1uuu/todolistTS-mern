@@ -1,12 +1,14 @@
 import React, { useState } from "react";
+import useLogin from "../hooks/useLogin";
 
 const Login = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const { login } = useLogin();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(email, password);
+    login(email, password);
   };
 
   return (

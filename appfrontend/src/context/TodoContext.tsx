@@ -49,8 +49,6 @@ const todosReducer = (
 const TodoContextProvider = ({ children }: providerProps) => {
   const [state, dispatch] = useReducer(todosReducer, initialState);
 
-  console.log(state);
-
   return (
     <TodosContext.Provider value={{ ...state, dispatch }}>
       {children}
