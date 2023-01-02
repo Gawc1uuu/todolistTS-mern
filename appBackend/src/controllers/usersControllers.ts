@@ -14,7 +14,7 @@ const loginController = async (req: Request, res: Response) => {
     const token = createToken(user._id);
     return res.status(200).json({ email, token });
   } catch (err) {
-    return res.status(500).json((err as Error).message);
+    return res.status(401).json({ err: (err as Error).message });
   }
 };
 
@@ -26,7 +26,7 @@ const signupController = async (req: Request, res: Response) => {
     const token = createToken(user._id);
     return res.status(200).json({ email, token });
   } catch (err) {
-    return res.status(500).json((err as Error).message);
+    return res.status(401).json({ err: (err as Error).message });
   }
 };
 

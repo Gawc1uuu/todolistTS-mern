@@ -4,7 +4,7 @@ import useLogin from "../hooks/useLogin";
 const Login = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const { login } = useLogin();
+  const { login, error, isPending } = useLogin();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -27,7 +27,8 @@ const Login = () => {
           value={password}
           type="password"
         />
-        <button>Login</button>
+        {isPending && <button disabled={true}>...</button>}
+        {!isPending && <button>Login</button>}
       </form>
     </div>
   );

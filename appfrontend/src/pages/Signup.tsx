@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import useSignup from "../hooks/useSignup";
 
 const Signup = () => {
-  const { signup } = useSignup();
+  const { signup, error, isPending } = useSignup();
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
@@ -27,7 +27,9 @@ const Signup = () => {
           value={password}
           type="password"
         />
-        <button>Sign up</button>
+        {isPending && <button disabled={true}>...</button>}
+        {!isPending && <button>Sign up</button>}
+        {error && <p>{error}</p>}
       </form>
     </div>
   );

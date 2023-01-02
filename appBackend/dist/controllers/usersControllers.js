@@ -27,7 +27,7 @@ const loginController = (req, res) => __awaiter(void 0, void 0, void 0, function
         return res.status(200).json({ email, token });
     }
     catch (err) {
-        return res.status(500).json(err.message);
+        return res.status(401).json({ err: err.message });
     }
 });
 exports.loginController = loginController;
@@ -40,7 +40,7 @@ const signupController = (req, res) => __awaiter(void 0, void 0, void 0, functio
         return res.status(200).json({ email, token });
     }
     catch (err) {
-        return res.status(500).json(err.message);
+        return res.status(401).json({ err: err.message });
     }
 });
 exports.signupController = signupController;
