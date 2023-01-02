@@ -12,9 +12,13 @@ const authMiddleware = async (
   }
   const token = req.headers.authorization.split(" ");
   const decoded = jwt.verify(token[1], "secret");
-  const { _id } = decoded as JwtPayload;
-  req.user = await User.findById(_id).select(_id);
-  next();
+  try {
+    const { _id } = decoded as JwtPayload;
+    req.user = await User.findById(_id).select(_id);
+    next();
+  } catch (e) {
+    return res.status(401).json({ e: (e as Error).message });
+  }
 };
 
 export { authMiddleware };

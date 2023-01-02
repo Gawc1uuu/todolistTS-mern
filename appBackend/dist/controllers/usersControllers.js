@@ -33,7 +33,6 @@ const loginController = (req, res) => __awaiter(void 0, void 0, void 0, function
 exports.loginController = loginController;
 const signupController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { email, password } = req.body;
-    console.log(email, password);
     try {
         const user = yield userModel_1.default.signup(email, password);
         const token = createToken(user._id);

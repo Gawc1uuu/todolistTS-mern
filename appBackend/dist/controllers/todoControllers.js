@@ -39,8 +39,11 @@ const addNewTodo = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
 exports.addNewTodo = addNewTodo;
 const deleteTodo = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
+    const { _id } = req.user;
     try {
-        const deletedTodo = yield todoModel_1.default.findByIdAndDelete(id);
+        const deletedTodo = yield todoModel_1.default.findByIdAndDelete(id).where({
+            user_id: _id,
+        });
         return res.status(200).json(deletedTodo);
     }
     catch (err) {

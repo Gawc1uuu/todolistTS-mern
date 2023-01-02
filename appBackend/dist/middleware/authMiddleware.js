@@ -21,8 +21,13 @@ const authMiddleware = (req, res, next) => __awaiter(void 0, void 0, void 0, fun
     }
     const token = req.headers.authorization.split(" ");
     const decoded = jsonwebtoken_1.default.verify(token[1], "secret");
-    const { _id } = decoded;
-    req.user = yield userModel_1.default.findById(_id).select(_id);
-    next();
+    try {
+        const { _id } = decoded;
+        req.user = yield userModel_1.default.findById(_id).select(_id);
+        next();
+    }
+    catch (e) {
+        return res.status(401).json({ e: e.message });
+    }
 });
 exports.authMiddleware = authMiddleware;

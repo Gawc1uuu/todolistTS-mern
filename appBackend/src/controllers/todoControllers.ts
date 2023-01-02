@@ -24,8 +24,11 @@ export const addNewTodo = async (req: Request, res: Response) => {
 
 export const deleteTodo = async (req: Request, res: Response) => {
   const { id } = req.params;
+  const { _id } = req.user;
   try {
-    const deletedTodo = await Todo.findByIdAndDelete(id);
+    const deletedTodo = await Todo.findByIdAndDelete(id).where({
+      user_id: _id,
+    });
     return res.status(200).json(deletedTodo);
   } catch (err) {
     return res.status(500).json({ err: "cannot delete todo" });
