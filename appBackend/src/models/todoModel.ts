@@ -2,11 +2,16 @@ import { Schema, model } from "mongoose";
 
 interface todo {
   text: string;
+  user_id: string;
 }
 
 const todoSchema = new Schema<todo>(
   {
     text: {
+      type: String,
+      required: true,
+    },
+    user_id: {
       type: String,
       required: true,
     },

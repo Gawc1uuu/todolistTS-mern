@@ -1,17 +1,27 @@
 import React, { useState } from "react";
 import axios from "axios";
 import useTodosContext from "../hooks/useTodosContext";
+import useAuthContext from "../hooks/useAuthContext";
 
 const TodoForm = () => {
   const { dispatch } = useTodosContext();
   const [text, setText] = useState<string>("");
+  const { user } = useAuthContext();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const response = await axios.post("http://localhost:4000/api/todos", {
-      text,
-    });
+    const response = await axios.post(
+      "http://localhost:4000/api/todos",
+      {
+        text,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${user?.token}`,
+        },
+      }
+    );
     dispatch({ type: "ADD_TODO", payload: response.data });
     setText("");
   };

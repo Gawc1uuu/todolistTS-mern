@@ -20,6 +20,14 @@ mongoose
     console.log(err);
   });
 
+//extending request interface
+
+declare module "express" {
+  export interface Request {
+    user?: any;
+  }
+}
+
 //middleware
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));

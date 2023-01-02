@@ -1,4 +1,4 @@
-import express, { Express } from "express";
+import express, { Express, Request } from "express";
 
 import {
   getAllTodos,
@@ -6,7 +6,11 @@ import {
   addNewTodo,
 } from "../controllers/todoControllers";
 
+import { authMiddleware } from "../middleware/authMiddleware";
+
 const router = express.Router();
+
+router.use(authMiddleware);
 
 router.get("/", getAllTodos);
 

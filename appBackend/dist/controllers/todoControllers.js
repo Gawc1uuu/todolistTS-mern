@@ -15,8 +15,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.deleteTodo = exports.addNewTodo = exports.getAllTodos = void 0;
 const todoModel_1 = __importDefault(require("../models/todoModel"));
 const getAllTodos = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { _id } = req.user;
     try {
-        const allTodos = yield todoModel_1.default.find({});
+        const allTodos = yield todoModel_1.default.find({ user_id: _id });
         return res.status(200).json(allTodos);
     }
     catch (err) {
@@ -26,8 +27,9 @@ const getAllTodos = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
 exports.getAllTodos = getAllTodos;
 const addNewTodo = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { text } = req.body;
+    const { _id } = req.user;
     try {
-        const newTodo = yield todoModel_1.default.create({ text });
+        const newTodo = yield todoModel_1.default.create({ text, user_id: _id });
         return res.status(200).json(newTodo);
     }
     catch (err) {
