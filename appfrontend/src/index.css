@@ -171,3 +171,34 @@ a {
   border-radius: 4px;
   color: #c1121f;
 }
+@media (max-width: 400px) {
+  body {
+    min-height: 100%;
+  }
+  html {
+    min-height: 100%;
+    background: url("./assets/pinboard.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: "Poppins", sans-serif;
+  }
+  .App {
+    min-height: 100%;
+  }
+  .todos-container {
+    padding: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 400px;
+    justify-self: center;
+  }
+  .signup {
+    margin: 0 auto;
+    max-width: 100%;
+    margin-top: 15%;
+  }
+}
