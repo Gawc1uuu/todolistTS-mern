@@ -61,6 +61,7 @@ html {
   flex-direction: column;
   justify-content: center;
   text-align: center;
+  word-break: break-all;
 }
 .single-todo:hover {
   transform: rotate(0deg);
