@@ -45,6 +45,10 @@ const Home = () => {
           todos.map((todo: Todo) => (
             <TodosDetails key={todo._id} todo={todo} />
           ))}
+        {!todos ||
+          (todos.length === 0 && (
+            <p className="no-todos">No todos to load...</p>
+          ))}
       </div>
     </div>
   );

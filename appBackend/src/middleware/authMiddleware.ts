@@ -11,8 +11,9 @@ const authMiddleware = async (
     return res.status(401).json({ err: "request unauthorized" });
   }
   const token = req.headers.authorization.split(" ");
-  const decoded = jwt.verify(token[1], "secret");
+
   try {
+    const decoded = jwt.verify(token[1], "secret");
     const { _id } = decoded as JwtPayload;
     req.user = await User.findById(_id).select(_id);
     next();

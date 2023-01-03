@@ -16,8 +16,15 @@ exports.deleteTodo = exports.addNewTodo = exports.getAllTodos = void 0;
 const todoModel_1 = __importDefault(require("../models/todoModel"));
 const getAllTodos = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { _id } = req.user;
+    const start = new Date();
+    const end = new Date();
+    start.setHours(0, 0, 0, 0);
+    end.setHours(23, 59, 59, 999);
     try {
-        const allTodos = yield todoModel_1.default.find({ user_id: _id });
+        const allTodos = yield todoModel_1.default.find({
+            user_id: _id,
+            createdAt: { $gte: start, $lte: end },
+        }).sort({ createdAt: 1 });
         return res.status(200).json(allTodos);
     }
     catch (err) {

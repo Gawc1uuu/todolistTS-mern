@@ -29,6 +29,7 @@ const TodoForm = () => {
   return (
     <form onSubmit={handleSubmit}>
       <input
+        maxLength={30}
         type="text"
         value={text}
         onChange={(e: React.ChangeEvent<HTMLInputElement>) =>

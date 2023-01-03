@@ -29,7 +29,7 @@ const Signup = () => {
         />
         {isPending && <button disabled={true}>...</button>}
         {!isPending && <button>Sign up</button>}
-        {error && <p>{error}</p>}
+        {error && <p className="auth-error">{error}</p>}
       </form>
     </div>
   );

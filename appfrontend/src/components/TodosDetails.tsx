@@ -14,6 +14,8 @@ const colors = [
   "eee1ffee",
 ];
 
+const color = colors[Math.floor(Math.random() * colors.length)];
+
 interface Todo {
   text: string;
   updatedAt: string;
@@ -46,9 +48,7 @@ const TodosDetails = ({ todo }: todoProps) => {
     <div
       className="single-todo"
       style={{
-        backgroundColor: `#${
-          colors[Math.floor(Math.random() * colors.length)]
-        }`,
+        backgroundColor: `#${color}`,
       }}
     >
       <p>{todo.text}</p>

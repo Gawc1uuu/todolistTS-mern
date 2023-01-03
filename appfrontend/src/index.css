@@ -40,7 +40,7 @@ html {
   margin-left: auto;
   margin-right: auto;
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-start;
   flex-wrap: wrap;
   max-width: 1200px;
   justify-self: center;
@@ -156,4 +156,17 @@ a {
   margin-right: auto;
   margin-left: auto;
   margin-bottom: 20px;
+}
+.no-todos {
+  margin: 3% auto;
+  background-color: white;
+  padding: 2rem 3rem;
+  border-radius: 4px;
+}
+.auth-error {
+  background-color: #ff758f;
+  border: 1px solid #a4133c;
+  padding: 1rem 2rem;
+  border-radius: 4px;
+  color: #c1121f;
 }
