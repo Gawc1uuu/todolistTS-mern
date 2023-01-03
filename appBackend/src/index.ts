@@ -2,6 +2,8 @@ import express, { Express, Request, Response } from "express";
 const app = express();
 import todosRouter from "./routes/todosRoutes";
 import userRouter from "./routes/usersRoutes";
+import * as dotenv from "dotenv";
+dotenv.config();
 import cors from "cors";
 
 //connecting to db
@@ -11,8 +13,8 @@ mongoose
   .connect("mongodb://127.0.0.1:27017/todoList3")
   .then(() => {
     //listening for requests
-    app.listen(4000, () => {
-      console.log("listening on port 4000");
+    app.listen(process.env.PORT || 4000, () => {
+      console.log(`listening on port ${process.env.PORT}`);
     });
     console.log("Connected to db");
   })

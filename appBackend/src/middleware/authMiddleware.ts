@@ -1,6 +1,8 @@
 import express, { Request, Response, NextFunction } from "express";
 import jwt, { JwtPayload, verify } from "jsonwebtoken";
 import User from "../models/userModel";
+import * as dotenv from "dotenv";
+dotenv.config();
 
 const authMiddleware = async (
   req: Request,
@@ -13,7 +15,7 @@ const authMiddleware = async (
   const token = req.headers.authorization.split(" ");
 
   try {
-    const decoded = jwt.verify(token[1], "secret");
+    const decoded = jwt.verify(token[1], `${process.env.SECRET}`);
     const { _id } = decoded as JwtPayload;
     req.user = await User.findById(_id).select(_id);
     next();

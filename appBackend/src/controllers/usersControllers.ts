@@ -1,9 +1,13 @@
 import express, { Request, Response } from "express";
 import User from "../models/userModel";
+import * as dotenv from "dotenv";
+dotenv.config();
 import jwt from "jsonwebtoken";
 
 const createToken = (_id: string) => {
-  const token = jwt.sign({ _id }, "secret", { expiresIn: 60 * 60 });
+  const token = jwt.sign({ _id }, `${process.env.SECRET}`, {
+    expiresIn: 60 * 60,
+  });
   return token;
 };
 
